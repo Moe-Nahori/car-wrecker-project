@@ -1,0 +1,88 @@
+.container {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.header {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.card {
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.cardHeader {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cardTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.badge {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--background-color);
+  border-radius: 9999px;
+}
+
+.taskList {
+  padding: 1rem;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.task:hover {
+  background-color: var(--background-color);
+}
+
+.iconWrapper {
+  margin-right: 0.75rem;
+}
+
+.completedIcon {
+  color: var(--primary-color);
+}
+
+.pendingIcon {
+  color: #9ca3af;
+}
+
+.taskText {
+  color: var(--text-color);
+}
+
+.completedText {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
