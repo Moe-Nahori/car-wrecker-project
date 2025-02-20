@@ -179,3 +179,75 @@ Enhanced progress tracking page with file system integration and fixed critical 
 - Changes are properly persisted to the markdown file
 - Page structure and location issues have been resolved
 - System is ready for further feature additions
+
+## Session 6 - February 20, 2025
+
+### Overview
+Set up Git version control and GitHub repository integration.
+
+### Completed Tasks
+1. Git Repository Setup
+   - Initialized local Git repository
+   - Created .gitignore file with proper configurations
+   - Created comprehensive README.md
+   - Made initial commit with project files
+
+2. GitHub Integration
+   - Created new GitHub repository: car-wrecker-project
+   - Connected local repository to GitHub
+   - Successfully pushed initial codebase
+   - Repository available at: https://github.com/Moe-Nahori/car-wrecker-project
+
+### Git Workflow Guidelines
+To maintain consistent development practices, follow these Git workflows in each session:
+
+1. Starting Your Work Session:
+   ```bash
+   # Pull latest changes before starting work
+   git pull origin main
+   ```
+
+2. Creating Feature Branches:
+   ```bash
+   # Create and switch to a new feature branch
+   git checkout -b feature/feature-name
+   ```
+
+3. Making Changes:
+   ```bash
+   # Check status of your changes
+   git status
+
+   # Stage your changes
+   git add .
+
+   # Commit with clear message
+   git commit -m "type: description"
+
+   # Push changes
+   git push origin feature/feature-name
+   ```
+
+4. Commit Message Types:
+   - feat: New feature
+   - fix: Bug fix
+   - docs: Documentation changes
+   - style: Formatting changes
+   - refactor: Code restructuring
+   - test: Adding tests
+   - chore: Maintenance tasks
+
+### Best Practices
+1. Always pull before starting work each day
+2. Create a new branch for each feature/fix
+3. Make small, focused commits
+4. Write clear, descriptive commit messages
+5. Push changes regularly to avoid losing work
+6. Keep feature branches short-lived
+7. Request reviews for important changes
+8. Merge only after testing
+
+### Environment Details
+- Repository URL: https://github.com/Moe-Nahori/car-wrecker-project
+- Main branch: main
+- Development workflow: Feature branch workflow
