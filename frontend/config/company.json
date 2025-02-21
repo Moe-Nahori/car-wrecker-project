@@ -1,0 +1,40 @@
+{
+  "company": {
+    "name": "iCar Wreckers",
+    "legalName": "iCar Wreckers Pty Ltd",
+    "contact": {
+      "phone": "+61 412 345 678",
+      "email": "info@icarwreckers.com.au",
+      "address": {
+        "street": "59 Helen Street",
+        "suburb": "Bellevue",
+        "state": "WA",
+        "country": "Australia",
+        "postcode": "6056"
+      }
+    },
+    "social": {
+      "facebook": "",
+      "instagram": "",
+      "linkedin": ""
+    },
+    "business": {
+      "abn": "",
+      "acn": "",
+      "openingHours": {
+        "monday": "8:00 AM - 5:00 PM",
+        "tuesday": "8:00 AM - 5:00 PM",
+        "wednesday": "8:00 AM - 5:00 PM",
+        "thursday": "8:00 AM - 5:00 PM",
+        "friday": "8:00 AM - 5:00 PM",
+        "saturday": "8:00 AM - 1:00 PM",
+        "sunday": "Closed"
+      }
+    },
+    "meta": {
+      "slogan": "Your Trusted Car Recycling Partner",
+      "description": "Perth's leading car wrecking and recycling service",
+      "established": "2024"
+    }
+  }
+}
