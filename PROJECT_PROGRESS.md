@@ -27,11 +27,11 @@
 - [ ] Quote generation endpoints
 - [ ] User management endpoints
 - [x] Market data endpoints
-- [x] Car pricing endpoints
+- [ ] Car pricing endpoints
 - [ ] Core Services
-- [x] Market Data Service
-- [x] Car Pricing Service
-- [x] Pricing algorithm implementation
+- [ ] Market Data Service
+- [ ] Car Pricing Service
+- [ ] Pricing algorithm implementation
 - [ ] VIN decoder integration
 - [ ] Location-based service integration
 - [ ] Email/SMS notification system
