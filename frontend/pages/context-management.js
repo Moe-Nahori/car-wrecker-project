@@ -6,10 +6,13 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { PlusCircle, MinusCircle } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 export default function ContextManagement() {
+  // ... keep all the existing state and functions ... 
   const [sessions, setSessions] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
   const [isNewSessionOpen, setIsNewSessionOpen] = React.useState(false);
   const [isEditSessionOpen, setIsEditSessionOpen] = React.useState(false);
   const [currentSession, setCurrentSession] = React.useState(null);
@@ -21,17 +24,28 @@ export default function ContextManagement() {
     tasks: ''
   });
 
+  // ... keep all the other functions unchanged ...
+  const fetchSessions = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await fetch('/api/context');
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || 'Failed to fetch sessions');
+      }
+      const data = await res.json();
+      setSessions(data);
+    } catch (err) {
+      console.error('Error fetching context:', err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   React.useEffect(() => {
-    fetch('/api/context')
-      .then(res => res.json())
-      .then(data => {
-        setSessions(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Error fetching context:', err);
-        setLoading(false);
-      });
+    fetchSessions();
   }, []);
 
   const handleNewSession = () => {
@@ -59,6 +73,7 @@ export default function ContextManagement() {
 
   const handleSaveNewSession = async () => {
     try {
+      setError(null);
       const response = await fetch('/api/context', {
         method: 'POST',
         headers: {
@@ -67,7 +82,10 @@ export default function ContextManagement() {
         body: JSON.stringify({ ...newSession, action: 'create' }),
       });
 
-      if (!response.ok) throw new Error('Failed to save session');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to save session');
+      }
 
       const updatedSessions = await response.json();
       setSessions(updatedSessions);
@@ -75,11 +93,13 @@ export default function ContextManagement() {
       setNewSession({ sessionNumber: '', date: '', overview: '', tasks: '' });
     } catch (error) {
       console.error('Error saving new session:', error);
+      setError(error.message);
     }
   };
 
   const handleSaveEdit = async () => {
     try {
+      setError(null);
       const response = await fetch('/api/context', {
         method: 'POST',
         headers: {
@@ -88,7 +108,10 @@ export default function ContextManagement() {
         body: JSON.stringify({ ...currentSession, action: 'edit' }),
       });
 
-      if (!response.ok) throw new Error('Failed to update session');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to update session');
+      }
 
       const updatedSessions = await response.json();
       setSessions(updatedSessions);
@@ -96,6 +119,7 @@ export default function ContextManagement() {
       setCurrentSession(null);
     } catch (error) {
       console.error('Error updating session:', error);
+      setError(error.message);
     }
   };
 
@@ -140,61 +164,77 @@ export default function ContextManagement() {
         </Button>
       </div>
       
+      {error && (
+        <div className="px-8">
+          <Alert variant="destructive">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        </div>
+      )}
+
       <div className="flex-1 overflow-y-auto px-8 pb-8">
         <div className="space-y-4">
-          {sessions.map((session) => (
-            <Card key={session.title} className="w-full">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle>{session.title}</CardTitle>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  onClick={() => handleEditSession(session)}
-                >
-                  Edit
-                </Button>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">{session.date}</p>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="font-semibold mb-2">Overview</h3>
-                    <div className="text-sm">{renderMarkdown(session.overview)}</div>
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h3 className="font-semibold">Completed Tasks</h3>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => toggleTasks(session.title)}
-                        className="p-0 h-auto"
-                      >
-                        {expandedTasks[session.title] ? (
-                          <MinusCircle className="h-5 w-5" />
-                        ) : (
-                          <PlusCircle className="h-5 w-5" />
-                        )}
-                      </Button>
-                    </div>
-                    <div className="text-sm mt-2">
-                      {expandedTasks[session.title] ? (
-                        renderMarkdown(session.tasks)
-                      ) : (
-                        renderMarkdown(getTaskPreview(session.tasks))
-                      )}
-                    </div>
-                  </div>
-                </div>
+          {sessions.length === 0 && !error ? (
+            <Card>
+              <CardContent className="p-6">
+                <p>No sessions found. Click "Add New Session" to create one.</p>
               </CardContent>
             </Card>
-          ))}
+          ) : (
+            sessions.map((session) => (
+              <Card key={session.title} className="w-full">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle>{session.title}</CardTitle>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => handleEditSession(session)}
+                  >
+                    Edit
+                  </Button>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground mb-4">{session.date}</p>
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="font-semibold mb-2">Overview</h3>
+                      <div className="text-sm">{renderMarkdown(session.overview)}</div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h3 className="font-semibold">Completed Tasks</h3>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => toggleTasks(session.title)}
+                          className="p-0 h-auto"
+                        >
+                          {expandedTasks[session.title] ? (
+                            <MinusCircle className="h-5 w-5" />
+                          ) : (
+                            <PlusCircle className="h-5 w-5" />
+                          )}
+                        </Button>
+                      </div>
+                      <div className="text-sm mt-2">
+                        {expandedTasks[session.title] ? (
+                          renderMarkdown(session.tasks)
+                        ) : (
+                          renderMarkdown(getTaskPreview(session.tasks))
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          )}
         </div>
       </div>
 
-      {/* New Session Dialog */}
+      {/* New Session Dialog - Fixed layout */}
       <Dialog open={isNewSessionOpen} onOpenChange={setIsNewSessionOpen}>
-        <DialogContent className="sm:max-w-[625px]">
+        <DialogContent className="sm:max-w-[625px] max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Add New Session</DialogTitle>
           </DialogHeader>
@@ -222,41 +262,39 @@ export default function ContextManagement() {
                 className="col-span-3"
               />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="overview" className="text-right">
+            <div className="grid grid-cols-4 items-start gap-4">
+              <Label htmlFor="overview" className="text-right pt-2">
                 Overview
               </Label>
               <Textarea
                 id="overview"
                 value={newSession.overview}
                 onChange={(e) => setNewSession({...newSession, overview: e.target.value})}
-                className="col-span-3"
-                rows={4}
+                className="col-span-3 min-h-[100px]"
               />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="tasks" className="text-right">
+            <div className="grid grid-cols-4 items-start gap-4">
+              <Label htmlFor="tasks" className="text-right pt-2">
                 Tasks
               </Label>
               <Textarea
                 id="tasks"
                 value={newSession.tasks}
                 onChange={(e) => setNewSession({...newSession, tasks: e.target.value})}
-                className="col-span-3"
-                rows={8}
+                className="col-span-3 min-h-[200px]"
                 placeholder="1. First task&#13;   - Subtask details&#13;2. Second task"
               />
             </div>
           </div>
-          <DialogFooter>
+          <DialogFooter className="mt-2">
             <Button type="submit" onClick={handleSaveNewSession}>Save Session</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
 
-      {/* Edit Session Dialog */}
+      {/* Edit Session Dialog - Fixed layout */}
       <Dialog open={isEditSessionOpen} onOpenChange={setIsEditSessionOpen}>
-        <DialogContent className="sm:max-w-[625px]">
+        <DialogContent className="sm:max-w-[625px] max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Edit Session {currentSession?.sessionNumber}</DialogTitle>
           </DialogHeader>
@@ -273,32 +311,30 @@ export default function ContextManagement() {
                 className="col-span-3"
               />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="editOverview" className="text-right">
+            <div className="grid grid-cols-4 items-start gap-4">
+              <Label htmlFor="editOverview" className="text-right pt-2">
                 Overview
               </Label>
               <Textarea
                 id="editOverview"
                 value={currentSession?.overview}
                 onChange={(e) => setCurrentSession({...currentSession, overview: e.target.value})}
-                className="col-span-3"
-                rows={4}
+                className="col-span-3 min-h-[100px]"
               />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="editTasks" className="text-right">
+            <div className="grid grid-cols-4 items-start gap-4">
+              <Label htmlFor="editTasks" className="text-right pt-2">
                 Tasks
               </Label>
               <Textarea
                 id="editTasks"
                 value={currentSession?.tasks}
                 onChange={(e) => setCurrentSession({...currentSession, tasks: e.target.value})}
-                className="col-span-3"
-                rows={8}
+                className="col-span-3 min-h-[200px]"
               />
             </div>
           </div>
-          <DialogFooter>
+          <DialogFooter className="mt-2">
             <Button type="submit" onClick={handleSaveEdit}>Update Session</Button>
           </DialogFooter>
         </DialogContent>
