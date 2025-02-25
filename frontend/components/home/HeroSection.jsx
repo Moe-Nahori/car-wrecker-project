@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { MapPin, Shield, Award, Clock } from 'lucide-react';
+import { useRouter } from 'next/router';
 
 const HeroSection = () => {
   const [carMake, setCarMake] = useState('');
+  const router = useRouter();
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push(`/quote?make=${encodeURIComponent(carMake)}`);
+  };
   
   return (
     <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
@@ -60,20 +67,22 @@ const HeroSection = () => {
                 <p className="text-gray-600 dark:text-gray-300">Enter your car details for an immediate valuation</p>
               </div>
               
-              <div className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <input 
                   type="text" 
                   placeholder="Car Make (e.g., Toyota)" 
                   value={carMake}
                   onChange={(e) => setCarMake(e.target.value)}
                   className="w-full text-lg py-4 px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  required
                 />
                 <button 
+                  type="submit"
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg py-4 px-6 rounded-lg transition-colors duration-200"
                 >
                   Get Free Quote Now
                 </button>
-              </div>
+              </form>
 
               <div className="flex items-center justify-center space-x-2 text-sm">
                 <span className="px-3 py-1 bg-green-50 text-green-700 rounded-full border border-green-200">
