@@ -9,7 +9,7 @@ import EducationalFooter from '../components/home/EducationalFooter';
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       <HeroSection />
       <HowItWorksSection />
       <TrustBuildingSection />
@@ -17,6 +17,6 @@ export default function HomePage() {
       <WhyChooseSection />
       <QuickResponseSection />
       <EducationalFooter />
-    </main>
+    </div>
   );
 }
