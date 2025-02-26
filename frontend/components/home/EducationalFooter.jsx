@@ -1,8 +1,14 @@
 import React from 'react';
-import { BookOpen, Recycle, DollarSign } from 'lucide-react';
+import { BookOpen, Recycle, DollarSign, Phone, Mail, MapPin, Clock } from 'lucide-react';
 import Link from 'next/link';
+import { getCompanyName, getContactInfo, getBusinessInfo } from '../../utils/config';
 
 const EducationalFooter = () => {
+  // Get company data from config
+  const companyName = getCompanyName();
+  const contactInfo = getContactInfo();
+  const businessInfo = getBusinessInfo();
+  
   const educationalContent = [
     {
       icon: BookOpen,
@@ -58,6 +64,70 @@ const EducationalFooter = () => {
               </div>
             );
           })}
+        </div>
+        
+        {/* Contact Information Section */}
+        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">{companyName}</h3>
+              <div className="flex items-center space-x-3">
+                <MapPin className="w-5 h-5 text-blue-600" />
+                <p className="text-gray-600 dark:text-gray-300">
+                  {contactInfo.address.street}, {contactInfo.address.suburb}, {contactInfo.address.state} {contactInfo.address.postcode}
+                </p>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="w-5 h-5 text-blue-600" />
+                <p className="text-gray-600 dark:text-gray-300">{contactInfo.phone}</p>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Mail className="w-5 h-5 text-blue-600" />
+                <p className="text-gray-600 dark:text-gray-300">{contactInfo.email}</p>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">Opening Hours</h3>
+              {Object.entries(businessInfo.openingHours).map(([day, hours]) => (
+                <div key={day} className="flex justify-between">
+                  <span className="capitalize text-gray-600 dark:text-gray-300">{day}</span>
+                  <span className="text-gray-600 dark:text-gray-300">{hours}</span>
+                </div>
+              ))}
+            </div>
+            
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">Quick Links</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/quote" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                    Get a Quote
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/locations" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                    Our Locations
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/education" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                    Educational Resources
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
+            <p className="text-gray-600 dark:text-gray-300">
+              © {new Date().getFullYear()} {companyName}. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </section>

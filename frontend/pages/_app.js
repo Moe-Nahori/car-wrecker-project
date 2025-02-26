@@ -1,11 +1,13 @@
 import '@/styles/globals.css'
-import Footer from '../components/layout/Footer'
+import FooterWithNavigation from '../components/home/FooterWithNavigation'
+import StickyCallButton from '../components/common/StickyCallButton'
 
 export default function App({ Component, pageProps }) {
   return (
     <>
       <Component {...pageProps} />
-      <Footer />
+      <FooterWithNavigation />
+      <StickyCallButton phoneNumber="+61 412 345 678" />
     </>
   )
 }

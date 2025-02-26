@@ -5,18 +5,22 @@ import TrustBuildingSection from '../components/home/TrustBuildingSection';
 import NetworkSection from '../components/home/NetworkSection';
 import WhyChooseSection from '../components/home/WhyChooseSection';
 import QuickResponseSection from '../components/home/QuickResponseSection';
-import EducationalFooter from '../components/home/EducationalFooter';
+import ValuationToolSection from '../components/home/ValuationToolSection';
+import CoverageMapSection from '../components/home/CoverageMapSection';
+import FAQPreviewSection from '../components/home/FAQPreviewSection';
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      <ValuationToolSection />
       <HowItWorksSection />
-      <TrustBuildingSection />
       <NetworkSection />
+      <CoverageMapSection />
+      <TrustBuildingSection />
+      <FAQPreviewSection />
       <WhyChooseSection />
       <QuickResponseSection />
-      <EducationalFooter />
     </div>
   );
 }
