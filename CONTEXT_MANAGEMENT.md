@@ -688,3 +688,115 @@ Fixed image loading issues using Next.js Image component
 Implemented proper height and positioning for visual elements
 Used tailwind classes for consistent styling
 All changes committed to the feature/homepage branch
+
+## Session 14 - 2025-02-28
+
+### Overview
+I improved the Coverage Map section of my car wrecker project homepage by implementing data-driven functionality with the following key elements:
+
+### Completed Tasks
+Created JSON Data Structure
+
+Designed and implemented wreckerLocations.json file with detailed information for 12 locations
+Each location includes ID, city, state, coordinates, number of wreckers, and participating businesses
+Created structured format for wrecker businesses with names, addresses, phone numbers, and specialties
+
+
+Developed Utility Functions
+
+Created locationUtils.js with functions to read and process location data
+Implemented methods for filtering, searching, and retrieving specific location information
+Added helper functions for getting statistics and formatting map markers
+
+
+Implemented Interactive Map
+
+Replaced static SVG blob with interactive OpenStreetMap using Leaflet
+Added markers for all locations with proper positioning
+Implemented popups with location details and navigation links
+Fixed server-side rendering issues to prevent runtime errors
+
+
+Enhanced CoverageMapSection Component
+
+Updated to load data dynamically from JSON source
+Added location selection functionality to display detailed information
+Implemented "Show more/less" toggle for viewing all locations
+Added proper loading states and error handling
+
+
+Created Location Detail Pages
+
+Implemented dynamic route for individual location details (/locations/[id])
+Added detailed view with local map, featured wrecker businesses, and service information
+Included navigation between locations and back to the main locations page
+
+
+Developed Locations Directory Page
+
+Created a comprehensive locations listing page
+Implemented filtering by state and search functionality
+Added interactive full-size map of all locations
+Included location cards with key information and links to detail pages
+
+
+
+The implementation follows a fully data-driven approach, allowing you to easily update locations by modifying the JSON file without changing the code. All components are now linked together through this common data source, providing a cohesive user experience for finding car wreckers across Australia.
+
+## Session 15 - 2025-02-28
+
+### Overview
+In this session, we successfully fixed several issues with the car wrecker project, focusing on the locations functionality, map display, and site navigation. We addressed problems with the interactive maps, page navigation, and the ability to navigate between location pages using the footer links.
+
+### Completed Tasks
+Fixed Location Detail Page
+
+Resolved critical runtime errors preventing location detail pages from loading
+Implemented proper error handling around map initialization
+Used React refs instead of direct DOM manipulation for better stability
+Added cleanup functions to prevent memory leaks and improve performance
+
+
+Improved Map Functionality
+
+Adjusted map center and zoom level to properly show all of Australia, including Tasmania
+Enhanced map loading speed with optimized resource loading techniques
+Implemented better error detection and fallback displays
+Fixed map refresh when navigating between location pages via footer links
+
+
+Enhanced Navigation Experience
+
+Added consistent top navigation bar across location pages with active page highlighting
+Ensured homepage links are accessible from all location pages
+Changed location cards on homepage to navigate directly to location details
+Maintained breadcrumb navigation for better user orientation
+
+
+Performance Optimizations
+
+Preloaded map assets earlier for faster rendering
+Implemented dynamic import strategies for better loading
+Added conditional loading states with visual feedback
+Reduced map initialization delay for faster perceived performance
+Used canvas rendering for better map performance
+
+
+UI/UX Improvements
+
+Added better loading states for map components
+Used emoji icons as fallback for Lucide icons to prevent rendering errors
+Improved visual consistency across all location-related pages
+Enhanced error handling with user-friendly fallback components
+
+
+
+Technical Details
+
+Fixed critical type error: "Cannot read properties of undefined (reading '_leaflet_pos')"
+Resolved "Element type is invalid" runtime error with proper component structure
+Addressed "Rendered more hooks than during the previous render" error
+Improved map initialization with safer DOM handling
+Enhanced site navigation with consistent active tab highlighting
+
+The location pages now function correctly, with proper map display including Tasmania, direct navigation between locations, and consistent navigation experience across the site.

@@ -1,0 +1,244 @@
+{
+  "locations": [
+    {
+      "id": "SYD",
+      "city": "Sydney",
+      "state": "NSW",
+      "wreckers": 124,
+      "isHighlighted": true,
+      "lat": -33.8688,
+      "lng": 151.2093,
+      "participants": [
+        {
+          "name": "Sydney Auto Wreckers",
+          "address": "123 Parramatta Road, Homebush NSW 2140",
+          "phone": "02 9123 4567",
+          "specialties": ["European", "Japanese", "SUVs"]
+        },
+        {
+          "name": "Eastern Suburbs Car Recyclers",
+          "address": "45 Botany Road, Waterloo NSW 2017",
+          "phone": "02 9876 5432",
+          "specialties": ["Luxury", "Commercial", "Trucks"]
+        },
+        {
+          "name": "North Shore Auto Salvage",
+          "address": "78 Pacific Highway, St Leonards NSW 2065",
+          "phone": "02 9444 3333",
+          "specialties": ["Classic Cars", "Vintage", "American"]
+        }
+      ]
+    },
+    {
+      "id": "MEL",
+      "city": "Melbourne",
+      "state": "VIC",
+      "wreckers": 117,
+      "isHighlighted": true,
+      "lat": -37.8136,
+      "lng": 144.9631,
+      "participants": [
+        {
+          "name": "Melbourne Metro Wreckers",
+          "address": "789 Dandenong Road, Malvern VIC 3144",
+          "phone": "03 9555 1234",
+          "specialties": ["Japanese", "Korean", "Sedans"]
+        },
+        {
+          "name": "Western Suburbs Auto Parts",
+          "address": "45 Ballarat Road, Footscray VIC 3011",
+          "phone": "03 9222 7777",
+          "specialties": ["European", "Luxury", "Sports Cars"]
+        }
+      ]
+    },
+    {
+      "id": "BRI",
+      "city": "Brisbane",
+      "state": "QLD",
+      "wreckers": 98,
+      "isHighlighted": true,
+      "lat": -27.4698,
+      "lng": 153.0251,
+      "participants": [
+        {
+          "name": "Brisbane Cash for Cars",
+          "address": "123 Ipswich Road, Woolloongabba QLD 4102",
+          "phone": "07 3333 4444",
+          "specialties": ["4x4", "SUVs", "Utes"]
+        },
+        {
+          "name": "Northside Auto Recyclers",
+          "address": "56 Gympie Road, Kedron QLD 4031",
+          "phone": "07 3867 5309",
+          "specialties": ["Commercial", "Vans", "Trucks"]
+        }
+      ]
+    },
+    {
+      "id": "PER",
+      "city": "Perth",
+      "state": "WA",
+      "wreckers": 87,
+      "isHighlighted": true,
+      "lat": -31.9505,
+      "lng": 115.8605,
+      "participants": [
+        {
+          "name": "Perth Auto Dismantlers",
+          "address": "45 Great Eastern Highway, Rivervale WA 6103",
+          "phone": "08 9376 5432",
+          "specialties": ["Mining Vehicles", "4x4", "Commercial"]
+        },
+        {
+          "name": "Southern River Wreckers",
+          "address": "123 Ranford Road, Canning Vale WA 6155",
+          "phone": "08 9455 7890",
+          "specialties": ["Japanese", "Korean", "European"]
+        }
+      ]
+    },
+    {
+      "id": "ADL",
+      "city": "Adelaide",
+      "state": "SA",
+      "wreckers": 65,
+      "isHighlighted": true,
+      "lat": -34.9285,
+      "lng": 138.6007,
+      "participants": [
+        {
+          "name": "Adelaide Hills Auto Salvage",
+          "address": "78 Main North Road, Prospect SA 5082",
+          "phone": "08 8342 1100",
+          "specialties": ["Classic Cars", "Vintage", "European"]
+        },
+        {
+          "name": "Southern Recyclers",
+          "address": "32 South Road, Edwardstown SA 5039",
+          "phone": "08 8277 6543",
+          "specialties": ["Japanese", "Korean", "Chinese"]
+        }
+      ]
+    },
+    {
+      "id": "GCT",
+      "city": "Gold Coast",
+      "state": "QLD",
+      "wreckers": 43,
+      "isHighlighted": true,
+      "lat": -28.0167,
+      "lng": 153.4000,
+      "participants": [
+        {
+          "name": "Gold Coast Auto Wreckers",
+          "address": "123 Brisbane Road, Labrador QLD 4215",
+          "phone": "07 5529 6789",
+          "specialties": ["Luxury", "Sports Cars", "European"]
+        }
+      ]
+    },
+    {
+      "id": "NEW",
+      "city": "Newcastle",
+      "state": "NSW",
+      "wreckers": 32,
+      "isHighlighted": false,
+      "lat": -32.9283,
+      "lng": 151.7817,
+      "participants": [
+        {
+          "name": "Hunter Valley Wreckers",
+          "address": "45 Industrial Drive, Mayfield NSW 2304",
+          "phone": "02 4023 5678",
+          "specialties": ["Commercial", "4x4", "Utes"]
+        }
+      ]
+    },
+    {
+      "id": "CAN",
+      "city": "Canberra",
+      "state": "ACT",
+      "wreckers": 28,
+      "isHighlighted": false,
+      "lat": -35.2809,
+      "lng": 149.1300,
+      "participants": [
+        {
+          "name": "Capital Auto Recyclers",
+          "address": "78 Canberra Avenue, Fyshwick ACT 2609",
+          "phone": "02 6239 5432",
+          "specialties": ["Government Vehicles", "Sedans", "European"]
+        }
+      ]
+    },
+    {
+      "id": "WOL",
+      "city": "Wollongong",
+      "state": "NSW",
+      "wreckers": 24,
+      "isHighlighted": false,
+      "lat": -34.4331,
+      "lng": 150.8831,
+      "participants": [
+        {
+          "name": "Illawarra Auto Wreckers",
+          "address": "65 Princes Highway, Unanderra NSW 2526",
+          "phone": "02 4271 6543",
+          "specialties": ["Industrial", "Commercial", "Japanese"]
+        }
+      ]
+    },
+    {
+      "id": "HOB",
+      "city": "Hobart",
+      "state": "TAS",
+      "wreckers": 19,
+      "isHighlighted": false,
+      "lat": -42.8821,
+      "lng": 147.3272,
+      "participants": [
+        {
+          "name": "Hobart Auto Salvage",
+          "address": "23 Main Road, Moonah TAS 7009",
+          "phone": "03 6278 9876",
+          "specialties": ["European", "4x4", "Commercial"]
+        }
+      ]
+    },
+    {
+      "id": "GEE",
+      "city": "Geelong",
+      "state": "VIC",
+      "wreckers": 18,
+      "isHighlighted": false,
+      "lat": -38.1499,
+      "lng": 144.3617,
+      "participants": [
+        {
+          "name": "Geelong Dismantlers",
+          "address": "45 Separation Street, North Geelong VIC 3215",
+          "phone": "03 5277 1234",
+          "specialties": ["European", "Japanese", "4x4"]
+        }
+      ]
+    },
+    {
+      "id": "TOW",
+      "city": "Townsville",
+      "state": "QLD",
+      "wreckers": 16,
+      "isHighlighted": false,
+      "lat": -19.2590,
+      "lng": 146.8169,
+      "participants": [
+        {
+          "name": "North Queensland Wreckers",
+          "address": "78 Ingham Road, West End QLD 4810",
+          "phone": "07 4723 5678",
+          "specialties": ["4x4", "Utes", "Commercial"]
+        }
+      ]
+    }
+  ]
+}

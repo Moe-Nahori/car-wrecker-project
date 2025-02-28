@@ -22,12 +22,14 @@ const FooterWithNavigation = () => {
     { name: 'Blog', href: '/blog' },
   ];
 
+  // Updated with correct location IDs from wreckerLocations.json
   const locationLinks = [
-    { name: 'Sydney', href: '/locations/sydney' },
-    { name: 'Melbourne', href: '/locations/melbourne' },
-    { name: 'Brisbane', href: '/locations/brisbane' },
-    { name: 'Perth', href: '/locations/perth' },
-    { name: 'Adelaide', href: '/locations/adelaide' },
+    { name: 'Sydney', href: '/locations/SYD' },
+    { name: 'Melbourne', href: '/locations/MEL' },
+    { name: 'Brisbane', href: '/locations/BRI' },
+    { name: 'Perth', href: '/locations/PER' },
+    { name: 'Adelaide', href: '/locations/ADL' },
+    { name: 'Gold Coast', href: '/locations/GCT' },
     { name: 'All Locations', href: '/locations' },
   ];
 

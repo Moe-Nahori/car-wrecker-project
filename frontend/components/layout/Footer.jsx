@@ -17,6 +17,15 @@ const Footer = () => {
   const socialLinks = getSocialLinks();
   const companyMeta = getCompanyMeta();
   
+  // Top locations using the correct IDs from wreckerLocations.json
+  const topLocations = [
+    { name: 'Sydney', id: 'SYD' },
+    { name: 'Melbourne', id: 'MEL' },
+    { name: 'Brisbane', id: 'BRI' },
+    { name: 'Perth', id: 'PER' },
+    { name: 'Adelaide', id: 'ADL' }
+  ];
+  
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -66,28 +75,20 @@ const Footer = () => {
             </ul>
           </div>
           
-          {/* Services */}
+          {/* Top Locations */}
           <div className="col-span-1">
-            <h2 className="text-xl font-bold mb-4">Our Services</h2>
+            <h2 className="text-xl font-bold mb-4">Top Locations</h2>
             <ul className="space-y-2">
+              {topLocations.map((location, index) => (
+                <li key={index}>
+                  <Link href={`/locations/${location.id}`} className="text-gray-400 hover:text-white">
+                    Car Wreckers {location.name}
+                  </Link>
+                </li>
+              ))}
               <li>
-                <Link href="/quote" className="text-gray-400 hover:text-white">
-                  Car Removal
-                </Link>
-              </li>
-              <li>
-                <Link href="/quote" className="text-gray-400 hover:text-white">
-                  Cash for Cars
-                </Link>
-              </li>
-              <li>
-                <Link href="/quote" className="text-gray-400 hover:text-white">
-                  Junk Car Removal
-                </Link>
-              </li>
-              <li>
-                <Link href="/quote" className="text-gray-400 hover:text-white">
-                  Scrap Car Recycling
+                <Link href="/locations" className="text-gray-400 hover:text-white">
+                  View All Locations
                 </Link>
               </li>
             </ul>
