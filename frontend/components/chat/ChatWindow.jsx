@@ -109,7 +109,7 @@ const ChatWindow = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-40 right-6 z-40 w-11/12 md:w-96 h-96 bg-white rounded-lg shadow-xl flex flex-col overflow-hidden border border-gray-200">
+    <div className="fixed bottom-40 right-6 z-40 w-11/12 md:w-96 h-96 bg-white rounded-lg shadow-xl flex flex-col overflow-hidden border border-gray-200 md:bottom-44 md:right-8">
       {/* Chat header */}
       <div className="bg-blue-600 text-white px-4 py-3 flex justify-between items-center">
         <div>

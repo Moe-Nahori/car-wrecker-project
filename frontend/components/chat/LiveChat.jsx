@@ -30,7 +30,7 @@ const LiveChat = () => {
     <>
       <ChatButton isOpen={isOpen} onClick={toggleChat} />
       {hasUnreadMessages && !isOpen && (
-        <div className="fixed bottom-40 right-6 z-40 bg-white p-4 rounded-lg shadow-lg border border-gray-200 w-64">
+        <div className="fixed bottom-44 right-6 z-40 bg-white p-4 rounded-lg shadow-lg border border-gray-200 w-64 md:bottom-48 md:right-8">
           <p className="text-gray-800 mb-2">Need help with your car valuation?</p>
           <div className="flex justify-between">
             <button 
