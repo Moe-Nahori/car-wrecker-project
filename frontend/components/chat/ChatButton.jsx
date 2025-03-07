@@ -16,10 +16,10 @@ const ChatButton = ({ isOpen, onClick }) => {
   }, [isOpen]);
 
   return (
-    <div className="fixed bottom-24 right-6 z-50 flex flex-col items-center">
-      {/* Label */}
+    <div className="fixed bottom-24 right-6 z-50 flex flex-col items-center md:bottom-6 md:right-6">
+      {/* Label - only show on desktop */}
       {!isOpen && (
-        <div className="bg-green-600 text-white px-3 py-1 rounded-t-lg shadow-md mb-1 font-medium text-sm">
+        <div className="bg-green-600 text-white px-3 py-1 rounded-t-lg shadow-md mb-1 font-medium text-sm hidden md:block">
           Live Chat
         </div>
       )}
