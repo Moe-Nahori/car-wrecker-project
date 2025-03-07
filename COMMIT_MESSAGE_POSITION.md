@@ -1,6 +1,7 @@
-fix: vertically stack chat and call buttons
+fix: improve LiveChat positioning on desktop and mobile
 
-- Positioned chat button above call button with appropriate spacing
-- Adjusted chat window position to match the new button layout
-- Improved mobile user experience by making both features easily accessible
-- Maintained visual consistency with the existing design
+- Fixed LiveChat button position to bottom right on large screens
+- Removed "Live Chat" text label on mobile screens for better alignment with call button
+- Adjusted ChatWindow position to match new button placement
+- Updated unread message notification positioning
+- Improved responsive design for chat elements across all screen sizes
