@@ -176,20 +176,7 @@ export default function LocationDetailPage() {
       </Head>
       
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-        {/* Top Navigation */}
-        <div className="bg-blue-600 dark:bg-blue-800 text-white py-2 px-4">
-          <div className="max-w-7xl mx-auto flex justify-between items-center">
-            <Link href="/" className="font-bold text-lg hover:text-blue-100">
-              iCar Wreckers
-            </Link>
-            <div className="flex space-x-6">
-              <Link href="/" className="hover:text-blue-100">Home</Link>
-              <Link href="/quote" className="hover:text-blue-100">Get Quote</Link>
-              <Link href="/locations" className="hover:text-blue-100 border-b-2 border-white">Locations</Link>
-              <Link href="/contact" className="hover:text-blue-100">Contact</Link>
-            </div>
-          </div>
-        </div>
+        {/* Removed duplicate top navigation - Header is already included in _app.js */}
         
         {/* Breadcrumbs */}
         <div className="bg-white dark:bg-gray-800 shadow-sm">

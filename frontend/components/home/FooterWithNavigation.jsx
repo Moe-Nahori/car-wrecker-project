@@ -1,22 +1,24 @@
 import React from 'react';
 import Link from 'next/link';
 import { Phone, Mail, MapPin, ChevronRight, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
-import { getCompanyName, getCompanyMeta } from '../../utils/config';
+import { getCompanyName, getCompanyMeta, getContactInfo, getSocialLinks } from '../../utils/config';
 
 const FooterWithNavigation = () => {
   const companyName = getCompanyName();
   const companyMeta = getCompanyMeta();
+  const contactInfo = getContactInfo();
+  const socialLinks = getSocialLinks();
   
   const mainNavLinks = [
     { name: 'Home', href: '/' },
     { name: 'Get a Quote', href: '/quote' },
     { name: 'Locations', href: '/locations' },
-    { name: 'Resources', href: '/resources' },
+    { name: 'Resources', href: '/education' },
     { name: 'Contact', href: '/contact' },
   ];
 
   const resourcesLinks = [
-    { name: 'How It Works', href: '/education/how-it-works' },
+    { name: 'How It Works', href: '/education/car-wrecking-process' },
     { name: 'About Us', href: '/about' },
     { name: 'FAQs', href: '/education/faqs' },
     { name: 'Blog', href: '/blog' },
@@ -65,14 +67,14 @@ const FooterWithNavigation = () => {
               <div className="space-y-2">
                 <div className="flex items-center text-gray-400">
                   <Phone className="w-5 h-5 mr-2 text-blue-400" />
-                  <a href="tel:+61412345678" className="hover:text-white">
-                    +61 412 345 678
+                  <a href={`tel:${contactInfo.phone}`} className="hover:text-white">
+                    {contactInfo.phone}
                   </a>
                 </div>
                 <div className="flex items-center text-gray-400">
                   <Mail className="w-5 h-5 mr-2 text-blue-400" />
-                  <a href="mailto:info@icarwreckers.com.au" className="hover:text-white">
-                    info@icarwreckers.com.au
+                  <a href={`mailto:${contactInfo.email}`} className="hover:text-white">
+                    {contactInfo.email}
                   </a>
                 </div>
                 <div className="flex items-center text-gray-400">
@@ -133,16 +135,16 @@ const FooterWithNavigation = () => {
               <div className="mt-6">
                 <h4 className="text-sm font-semibold text-gray-300 mb-2">Follow Us</h4>
                 <div className="flex space-x-4">
-                  <a href="#" className="text-gray-400 hover:text-white">
+                  <a href={socialLinks.facebook || "#"} className="text-gray-400 hover:text-white">
                     <Facebook className="w-5 h-5" />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-white">
+                  <a href={socialLinks.instagram || "#"} className="text-gray-400 hover:text-white">
                     <Instagram className="w-5 h-5" />
                   </a>
                   <a href="#" className="text-gray-400 hover:text-white">
                     <Twitter className="w-5 h-5" />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-white">
+                  <a href={socialLinks.linkedin || "#"} className="text-gray-400 hover:text-white">
                     <Linkedin className="w-5 h-5" />
                   </a>
                 </div>
